@@ -21,11 +21,16 @@
         android:textSize="20dp"
         android:id="@+id/take_a_quiz"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Let's Go"
         android:textAllCaps="false"
-        android:layout_marginTop="406dp"
         android:id="@+id/next"/>
+        </LinearLayout>
 </LinearLayout>
