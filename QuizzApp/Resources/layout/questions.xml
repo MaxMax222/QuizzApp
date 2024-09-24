@@ -8,7 +8,10 @@
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="50dp"
-		android:id="@+id/question"/>
+		android:id="@+id/question"
+		android:text="what is the type of the card?"
+		android:gravity="center"
+		android:textSize="30dp"/>
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -17,24 +20,34 @@
 		android:id="@+id/imageContainer"
         >
 	</LinearLayout>
-		<RadioGroup
-			android:layout_width="match_parent"
+	<RadioGroup
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:id="@+id/select_options">
+		<RadioButton
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:orientation="horizontal">
-			<RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-			<RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-			<RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-			<RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-		</RadioGroup>
+			android:id="@+id/diamonds"
+			android:text="Diamonds"
+			/>
+		<RadioButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/hearts"
+			android:text="Hearts"/>
+		<RadioButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/clubs"
+			android:text="Clubs"/>
+		<RadioButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/spades"
+			android:text="Spades"/>
+	</RadioGroup>
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

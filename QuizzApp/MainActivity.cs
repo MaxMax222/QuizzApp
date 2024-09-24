@@ -38,6 +38,8 @@ namespace QuizzApp
         {
             next = FindViewById<Button>(Resource.Id.next);
             score = FindViewById<TextView>(Resource.Id.score);
+
+            score.Text = $"Previous Score: {Intent.GetStringExtra("score")}/9";
         }
 
 
