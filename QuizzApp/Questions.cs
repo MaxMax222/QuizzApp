@@ -21,6 +21,7 @@ namespace QuizzApp
         ImageView[] images;
         int[] radioButtonIds;
         int currentQuestion, score = 0, amount_of_questions = 10;
+        string msg = "";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,10 +46,15 @@ namespace QuizzApp
                 if (options.CheckedRadioButtonId == radioButtonIds[int.Parse(images[currentQuestion].Tag.ToString())])
                 {
                     score++;
+                    msg = "Correct Answer";
                 }
-
+                else
+                {
+                    msg = "Wrong Answer";
+                }
                 currentQuestion++;
                 GenerateQuestion();
+                Toast.MakeText(this, msg, ToastLength.Short).Show();
             }
             else
             {
@@ -100,7 +106,7 @@ namespace QuizzApp
         {
             char[] types = { 's', 'c', 'h', 'd' };
             var images = new ImageView[amount_of_questions];
-            int tagInt = 0, num;
+            int tagInt , num;
             char type;
             var typeToTagMap = new Dictionary<char, int>
             {
