@@ -102,6 +102,14 @@ namespace QuizzApp
             var images = new ImageView[amount_of_questions];
             int tagInt = 0, num;
             char type;
+            var typeToTagMap = new Dictionary<char, int>
+            {
+                { 'd', 0 },
+                { 'h', 1 },
+                { 'c', 2 },
+                { 's', 3 }
+            };
+
 
             for (int i = 0; i < amount_of_questions; i++)
             {
@@ -110,22 +118,7 @@ namespace QuizzApp
                 type = types[rnd.Next(4)];
                 images[i].SetImageResource(base.Resources.GetIdentifier($"img{num}{type}", "drawable", this.PackageName));
 
-                // Set a tag based on the type of the image
-                switch (type)
-                {
-                    case 'd':
-                        tagInt = 0;
-                        break;
-                    case 'h':
-                        tagInt = 1;
-                        break;
-                    case 'c':
-                        tagInt = 2;
-                        break;
-                    case 's':
-                        tagInt = 3;
-                        break;
-                }
+                tagInt = typeToTagMap.TryGetValue(type, out var tag) ? tag : -1;
                 images[i].Tag = tagInt; // Store the tag value to identify the correct answer later
             }
             return images;
