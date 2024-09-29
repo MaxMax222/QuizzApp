@@ -31,18 +31,26 @@ namespace QuizzApp
         private void Next_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(Questions));
-            StartActivity(intent);
+            StartActivityForResult(intent,0);
         }
 
         void Init()
         {
             next = FindViewById<Button>(Resource.Id.next);
             score = FindViewById<TextView>(Resource.Id.score);
-
-            score.Text = $"Previous Score: {Intent.GetStringExtra("score")}/9";
         }
 
 
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            if (requestCode == 0)
+            {
+                if (resultCode == Result.Ok)
+                {
+                    score.Text = $"Previous score is : {data.GetIntExtra("score",0)}/9";
+                }
+            }
+        }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

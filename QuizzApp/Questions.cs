@@ -51,9 +51,10 @@ namespace QuizzApp
             {
                 CheckAnswer();
                 // End of quiz, go to main activity
-                var intent = new Intent(this, typeof(MainActivity));
-                intent.PutExtra("score", score.ToString());
-                StartActivity(intent);
+                Intent intent = new Intent();
+                intent.PutExtra("score", score);
+                SetResult(Result.Ok, intent);
+                Finish();
             }
 
 
