@@ -38,6 +38,11 @@
             android:layout_height="50dp"
             android:text="Log In"
             android:id="@+id/logBtn"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Erase Data"
+            android:id="@+id/erase"/>
         </LinearLayout>
 </LinearLayout>
 

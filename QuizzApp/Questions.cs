@@ -11,7 +11,7 @@ using Android.Widget;
 
 namespace QuizzApp
 {
-    [Activity(Label = "Questions")]
+    [Activity(Label = "Questions", Theme = "@style/AppTheme")]
     public class Questions : Activity
     {
         RadioGroup options;

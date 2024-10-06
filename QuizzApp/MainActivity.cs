@@ -11,7 +11,7 @@ namespace QuizzApp
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
-        Button next;
+        Button next, logOut;
         TextView score; 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,6 +26,14 @@ namespace QuizzApp
         private void AddClicks()
         {
             next.Click += Next_Click;
+            logOut.Click += LogOut_Click;
+        }
+
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent();
+            SetResult(Result.Ok, intent);
+            Finish();
         }
 
         private void Next_Click(object sender, EventArgs e)
@@ -37,6 +45,7 @@ namespace QuizzApp
         void Init()
         {
             next = FindViewById<Button>(Resource.Id.next);
+            logOut = FindViewById<Button>(Resource.Id.logOut);
             score = FindViewById<TextView>(Resource.Id.score);
         }
 

@@ -32,5 +32,10 @@
         android:text="Let's Go"
         android:textAllCaps="false"
         android:id="@+id/next"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Log out"
+            android:id="@+id/logOut"/>
         </LinearLayout>
 </LinearLayout>
