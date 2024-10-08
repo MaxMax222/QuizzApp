@@ -5,6 +5,7 @@ using AndroidX.AppCompat.App;
 using Android.Widget;
 using System;
 using Android.Content;
+using Android.Icu.Text;
 
 namespace QuizzApp
 {
@@ -12,7 +13,9 @@ namespace QuizzApp
     public class MainActivity : AppCompatActivity
     {
         Button next, logOut;
-        TextView score; 
+        TextView score, bestScore;
+        ISharedPreferences preferences;
+        ISharedPreferencesEditor editor;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -47,6 +50,11 @@ namespace QuizzApp
             next = FindViewById<Button>(Resource.Id.next);
             logOut = FindViewById<Button>(Resource.Id.logOut);
             score = FindViewById<TextView>(Resource.Id.score);
+            bestScore = FindViewById<TextView>(Resource.Id.bestScore);
+            bestScore.Text += Intent.GetStringExtra("bestScore");
+
+            preferences = GetSharedPreferences("User_Details", FileCreationMode.Private);
+            editor = preferences.Edit();
         }
 
 
@@ -57,6 +65,12 @@ namespace QuizzApp
                 if (resultCode == Result.Ok)
                 {
                     score.Text = $"Previous score is : {data.GetIntExtra("score",0)}/9";
+                    if (data.GetIntExtra("score", 0) > int.Parse(Intent.GetStringExtra("bestScore")))
+                    {
+                        editor.PutString("HighScore", $"{data.GetIntExtra("score", 0)}");
+                        editor.Apply();
+                        bestScore.Text = $"Best score: {data.GetIntExtra("score",0)}";
+                    }
                 }
             }
         }

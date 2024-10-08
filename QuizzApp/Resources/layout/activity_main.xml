@@ -21,6 +21,14 @@
         android:id="@+id/score"
         android:text="Previos score: N/A"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/bestScore"
+        android:text="Best score: "
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

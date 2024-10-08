@@ -92,6 +92,7 @@ namespace QuizzApp
 
                     // Navigate to the main activity
                     var intent = new Intent(this, typeof(MainActivity));
+                    intent.PutExtra("bestScore", preferences.GetString("HighScore", "0"));  
                     StartActivityForResult(intent, 0);
                 }
                 else
@@ -112,6 +113,7 @@ namespace QuizzApp
 
                 // Navigate to the main activity
                 var intent = new Intent(this, typeof(MainActivity));
+                intent.PutExtra("bestScore", preferences.GetString("HighScore", "0"));
                 StartActivityForResult(intent, 0);
             }
         }
@@ -133,6 +135,10 @@ namespace QuizzApp
             editor.PutString("Name", name.Text);
             editor.PutString("Password", password.Text);
             editor.PutBoolean("Remember", checkRemember.Checked);
+            if (preferences.GetString("HighScore", null) == null)
+            {
+                editor.PutString("HighScore", "0");
+            }
             editor.Apply(); // Apply changes
         }
 
